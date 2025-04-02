@@ -6,10 +6,13 @@
  * @param string $data Donnée à nettoyer
  * @return string Donnée nettoyée
  */
-function nettoyage(string $data): string
+function nettoyage(?string $data): string
 {
-    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+    // ?string accepte null 
+    //  ?? => opérateur null coalescent / retourne $data si $data n’est pas null ou ''   si $data est null
+    return htmlspecialchars(trim($data ?? ''), ENT_QUOTES, 'UTF-8');
 }
+
 
 /**
  * Affiche un message sous forme d'alerte
